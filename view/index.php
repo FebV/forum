@@ -83,16 +83,16 @@
                     <div class="modal-body">
                         <form class="form-horizontal">
                             <div class="form-group">
-                                <input type='text' class="form-control" placeholder="请输入用户名">
+                                <input type='text' id="signup_username" class="form-control" placeholder="请输入用户名">
                             </div>
                             <div class="form-group">
-                                <input type='password' class="form-control" placeholder="请输入密码">
+                                <input type='password' id="signup_password" class="form-control" placeholder="请输入密码">
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                        <button type="button" class="btn btn-primary">注册</button>
+                        <button type="button" class="btn btn-primary" onclick="signup()">注册</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
@@ -128,5 +128,21 @@
         <script src="js/jquery-2.2.0.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>
+        <script>
+            function signup()
+            {
+                $.ajax({
+                    url: 'user',
+                    data: {
+                        username: $('#signup_username').val(),
+                        password: $('#signup_password').val()
+                    },
+                    success: function(data)
+                    {
+                        alert(data);
+                    }
+                });
+            }
+        </script>
      </body>
 </html>

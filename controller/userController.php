@@ -1,8 +1,10 @@
 <?php 
+include_once('model/users.php');
+
 class userController{
 
     
-    public new_user()
+    public function new_user()
     {
         $username = $_REQUEST['username'];
         $password = $_REQUEST['password'];

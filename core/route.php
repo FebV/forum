@@ -1,6 +1,7 @@
 <?php
-include('core/controller.php');
-include('core/database.php');
+include_once('core/database.php');
+include_once('core/controller.php');
+
 
 $url_arr = split('/', $_SERVER['PHP_SELF']);
 if(!isset($url_arr[3]))
