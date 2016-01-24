@@ -3,3 +3,8 @@ nav a,img
     padding:  0 !important;
     height: 50px;
 }
+
+#content
+{
+    margin: 20px;
+}

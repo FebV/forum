@@ -1,5 +1,5 @@
 <?php 
-class forum extends database
+class forums extends database
 {
     public $id;
     public $name;

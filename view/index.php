@@ -16,13 +16,11 @@
         <nav class='navbar navbar-default'>
             <div class='container-fluid'>
                 <div class='navbar-header'>
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class='navbar-brand' href='#'><img src='pic/PubBoard.png' /></a>
+                    <a class='navbar-brand' href='index.php'><img src='pic/PubBoard.png' /></a>
+                </div>
+                <div id="sign">
+                    <button type="button" class="btn btn-default navbar-btn navbar-right" data-toggle="modal" data-target="#signInModal">Sign in</button>
+                    <button type="button" class="btn btn-default navbar-btn navbar-right" data-toggle="modal" data-target="#signUpModal">Sign up</button>
                 </div>
             </div>
         </nav>
@@ -50,7 +48,7 @@
 
                 </div>
 
-  <!-- Controls -->
+                <!-- Controls -->
                 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
@@ -67,13 +65,66 @@
                 <a href='forum'><img src='pic/所有贴吧.png' class='img-circle'></a>
             </div>
             <div id='down_center'>
-                <img src='pic/创建新贴吧.png' class='img-circle'>
+                <img src='pic/敬请期待.png' class='img-circle'>
             </div>
             <div id='down_right'>
                 <img src='pic/敬请期待.png' class='img-circle'>
             </div>
         </div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        
+        <!--modal frame for signup-->
+        <div class="modal fade" id="signUpModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">注册您的账户</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <input type='text' class="form-control" placeholder="请输入用户名">
+                            </div>
+                            <div class="form-group">
+                                <input type='password' class="form-control" placeholder="请输入密码">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary">注册</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        
+        <!--modal frame for signin-->
+        <div class="modal fade" id="signInModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">登陆您的账户</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <input type='text' class="form-control" placeholder="请输入用户名">
+                            </div>
+                            <div class="form-group">
+                                <input type='password' class="form-control" placeholder="请输入密码">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary">登陆</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="js/jquery-2.2.0.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>

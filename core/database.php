@@ -1,5 +1,5 @@
 <?php
-include('model/forum.php');
+include('model/forums.php');
 
 class database
 {
@@ -16,7 +16,5 @@ class database
         $this->stmt = $this->mysql->stmt_init();
     }
     
-    
-
 }
 ?>

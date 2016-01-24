@@ -1,4 +1,7 @@
 <?php
+include('core/controller.php');
+include('core/database.php');
+
 $url_arr = split('/', $_SERVER['PHP_SELF']);
 if(!isset($url_arr[3]))
 {
@@ -16,9 +19,15 @@ if($ctrl == '/' && $method = 'GET')
 if($ctrl == 'forum' && $method = 'GET')
 {
     // include('core/database.php');
-    // $db = new forum();
+    // $db = new forums();
     // $res = $db->find_all();
     include('view/forum.php');
+}
+
+if($ctrl == 'user' && $method = 'POST' )
+{
+    $con = new userController();
+    $con->new_user();
 }
 
 ?>

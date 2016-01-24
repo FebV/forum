@@ -13,19 +13,24 @@
         <nav class='navbar navbar-default'>
             <div class='container-fluid'>
                 <div class='navbar-header'>
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class='navbar-brand' href='#'><img src='pic/PubBoard.png' /></a>
+                    <a class='navbar-brand' href='index.php'><img src='pic/PubBoard.png' /></a>
                 </div>
             </div>
         </nav>    
 
+        <div id="content">
+            <div class="panel panel-default">
+                <div class="panel-heading">Panel heading without title</div>
+                <div class="panel-body">
+                    Panel content
+                </div>
+            </div>
+        </div>
+        
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="js/jquery-2.2.0.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>
+        
+        
     </body>    

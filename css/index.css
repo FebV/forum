@@ -9,6 +9,10 @@ nav{
     width: 100%;
     margin-bottom: 0px !important;
 }
+nav button
+{
+    margin-right: 10px !important;
+}
 nav a,img
 {
     padding: 0 !important;
@@ -58,4 +62,14 @@ nav a,img
     height: 100%;
     width: 33%;
 
+}
+#signUpModal .form-group
+{
+    margin-left: 15%;
+    width: 70%;
+}
+#signInModal .form-group
+{
+    margin-left: 15%;
+    width: 70%;
 }
