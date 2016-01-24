@@ -64,7 +64,7 @@
         
         <div id='down'>
             <div id='down_left'>
-                <img src='pic/所有贴吧.png' class='img-circle'>
+                <a href='forum'><img src='pic/所有贴吧.png' class='img-circle'></a>
             </div>
             <div id='down_center'>
                 <img src='pic/创建新贴吧.png' class='img-circle'>

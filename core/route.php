@@ -15,10 +15,10 @@ if($ctrl == '/' && $method = 'GET')
 
 if($ctrl == 'forum' && $method = 'GET')
 {
-    include('core/database.php');
-    $db = new forum();
-    $res = $db->find_all();
-    //include('view/forum.php');
+    // include('core/database.php');
+    // $db = new forum();
+    // $res = $db->find_all();
+    include('view/forum.php');
 }
 
 ?>
