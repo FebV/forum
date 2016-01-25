@@ -109,16 +109,16 @@
                     <div class="modal-body">
                         <form class="form-horizontal">
                             <div class="form-group">
-                                <input type='text' class="form-control" placeholder="请输入用户名">
+                                <input type='text' id="login_username" class="form-control" placeholder="请输入用户名">
                             </div>
                             <div class="form-group">
-                                <input type='password' class="form-control" placeholder="请输入密码">
+                                <input type='password' id="login_password" class="form-control" placeholder="请输入密码">
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                        <button type="button" class="btn btn-primary">登陆</button>
+                        <button type="button" class="btn btn-primary" onclick="login()">登陆</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
@@ -133,9 +133,26 @@
             {
                 $.ajax({
                     url: 'user',
+                    type: "POST",
                     data: {
                         username: $('#signup_username').val(),
                         password: $('#signup_password').val()
+                    },
+                    success: function(data)
+                    {
+                        alert(data);
+                    }
+                });
+            }
+            
+             function login()
+            {
+                $.ajax({
+                    url: 'login',
+                    type: "POST",
+                    data: {
+                        username: $('#login_username').val(),
+                        password: $('#login_password').val()
                     },
                     success: function(data)
                     {

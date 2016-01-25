@@ -5,6 +5,7 @@ class forums extends database
     public $name;
     public $manager_id;
     
+    //find by id
     public function find($id)
     {
         $this->stmt->prepare('select * from forum where id = ?');
@@ -15,6 +16,7 @@ class forums extends database
         return $this;
     }
     
+    //find first 10 record by default
     public function find_all($from = 0, $size = 10)
     {
         $this->stmt->prepare('select * from forum limit ?, ?');
