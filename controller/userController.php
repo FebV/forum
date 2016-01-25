@@ -13,6 +13,14 @@ class userController{
         $suc = $user->insert($username, $password, $nickname);
         return $suc ? 1 : 0;
     }
+    
+    public function get_profile()
+    {
+        $id = $_GET['id'];
+        $user = new users();
+        $res = $user->find($id);
+        echo json_encode($res);
+    }
 }
 
 ?>

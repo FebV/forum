@@ -8,9 +8,15 @@ class authController
         $username = $_POST['username'];
         $password = $_POST['password'];
         $auth = new users();
-        $uid = $auth->verify($username, $password);
-        $_SESSION['uid'] = $uid ? $uid : 0;
-        echo $_SESSION['uid'];
+        $user = $auth->verify($username, $password);
+        if($user)
+        {
+            $_SESSION['uid'] = $user->id;
+            $_SESSION['uname'] = $user->username;
+            echo $user->id;
+            return;
+        }
+        echo 0;
     }
 }
 ?>

@@ -22,6 +22,9 @@
                     <button type="button" class="btn btn-default navbar-btn navbar-right" data-toggle="modal" data-target="#signInModal">Sign in</button>
                     <button type="button" class="btn btn-default navbar-btn navbar-right" data-toggle="modal" data-target="#signUpModal">Sign up</button>
                 </div>
+                <div id="status">
+                    <p class="navbar-text navbar-right" id='profile'></p>
+                </div>
             </div>
         </nav>
         <div id='up'>
@@ -140,7 +143,13 @@
                     },
                     success: function(data)
                     {
-                        alert(data);
+                        if(data == 0)
+                        {   
+                            alert('注册成功!');
+                            //show_status();
+                        }
+                        else
+                            alert('哎呀失败了');
                     }
                 });
             }
@@ -156,9 +165,34 @@
                     },
                     success: function(data)
                     {
-                        alert(data);
+                        if(data != 0)
+                        {
+                            alert('成功了!');
+                            show_status(data);
+                        }
+                        else{
+                            alert('失败了');
+                        }
                     }
                 });
+            }
+            
+            function show_status(id)
+            {
+                $('#sign').css('display', 'none');
+                $('#profile').css('display', 'block');
+                $.ajax({
+                    url: 'user',
+                    type: 'GET',
+                    data: {
+                        id: id
+                    },
+                    success: function(data){
+                        var res = JSON.parse(data);
+                        $('#profile').html(res.username);
+                    }
+                })
+                
             }
         </script>
      </body>

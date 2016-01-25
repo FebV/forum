@@ -11,12 +11,17 @@ nav{
 }
 nav button
 {
+    width: 10%;
     margin-right: 10px !important;
 }
 nav a,img
 {
     padding: 0 !important;
     height: 50px;
+}
+nav #status
+{
+    margin-right: 5%;
 }
 #up
 {

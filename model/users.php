@@ -18,11 +18,23 @@ class users extends database
     //verify existence, return id
     public function verify($username, $password)
     {
-        $this->stmt->prepare('select id from users where username = ? and password = ?');
+        $this->stmt->prepare('select id, username from users where username = ? and password = ?');
         $this->stmt->bind_param('ss', $username, $password);
         $this->stmt->execute();
-        $this->stmt->bind_result($this->id);
-        return $this->stmt->fetch() ? $this->id : false;
+        $this->stmt->bind_result($this->id, $this->username);
+        return $this->stmt->fetch() ? $this : false;
+    }
+    
+    public function find($id)
+    {
+        $this->stmt->prepare('select username, nickname from users where id = ?');
+        $this->stmt->bind_param('s', $id);
+        $this->stmt->execute();
+        $this->stmt->bind_result($this->username, $this->nickname);
+        $this->stmt->fetch();
+        $arr['username'] = $this->username;
+        $arr['nickname'] = $this->nickname;
+        return $arr;
     }
 }
 ?>

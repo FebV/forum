@@ -36,6 +36,12 @@ if($ctrl == 'user' && $method == 'POST' )
     $con->new_user();
 }
 
+if($ctrl == 'user' && $method == 'GET' )
+{
+    $con = new userController();
+    $con->get_profile();
+}
+
 if($ctrl == 'login' && $method == 'POST')
 {
     $con = new authController();
