@@ -3,31 +3,35 @@ class forums extends database
 {
     public $id;
     public $name;
-    public $manager_id;
     
     //find by id
     public function find($id)
     {
-        $this->stmt->prepare('select * from forum where id = ?');
-        $this->stmt->bind_param('s', $id);
+        $this->stmt->prepare('select * from forums where id = ?');
+        $this->stmt->bind_param('i', $id);
         $this->stmt->execute();
-        $this->stmt->bind_result($this->id, $this->name, $this->manager_id);
+        $this->stmt->bind_result($this->id, $this->name);
         $this->stmt->fetch();
-        return $this;
+        $arr['id'] = $this->id;
+        $arr['name'] = $this->name;
+        return $arr;
     }
     
     //find first 10 record by default
     public function find_all($from = 0, $size = 10)
     {
-        $this->stmt->prepare('select * from forum limit ?, ?');
+        $this->stmt->prepare('select * from forums limit ?, ?');
         $this->stmt->bind_param('ii', $from, $size);
         $this->stmt->execute();
-        $this->stmt->bind_result($this->id, $this->name, $this->manager_id);
+        $this->stmt->bind_result($this->id, $this->name);
+        $arr = array();
         while($this->stmt->fetch())
         {
-            $res[] = $this;
+            $res['id'] = $this->id;
+            $res['name'] = $this->name;
+            $arr[] = $res;
         }
-        return $res;
+        return $arr;
     }
 }
 ?>

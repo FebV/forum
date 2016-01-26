@@ -19,18 +19,26 @@
         </nav>    
 
         <div id="content">
-            <div class="panel panel-default">
-                <div class="panel-heading">Panel heading without title</div>
-                <div class="panel-body">
-                    Panel content
-                </div>
-            </div>
         </div>
         
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="js/jquery-2.2.0.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>
-        
+        <script>
+            $.ajax({
+                url: 'forums/0',
+                type: 'GET',
+                success: function(data)
+                {
+                    var res = JSON.parse(data);
+                    var size = res.length;
+                    for(var i = 0; i < size; i++)
+                    {
+                        $('#content').append('<div id="content"><div class="panel panel-default"><div class="panel-heading">'+res[i].name+'</div><div class="panel-body">立即加入'+res[i].name+'吧!</div></div></div>');
+                    }
+                }
+            })
+        </script>
         
     </body>    

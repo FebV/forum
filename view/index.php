@@ -65,7 +65,7 @@
         
         <div id='down'>
             <div id='down_left'>
-                <a href='forum'><img src='pic/所有贴吧.png' class='img-circle'></a>
+                <a href='forums'><img src='pic/所有贴吧.png' class='img-circle'></a>
             </div>
             <div id='down_center'>
                 <img src='pic/敬请期待.png' class='img-circle'>

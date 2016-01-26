@@ -6,6 +6,16 @@ class users extends database
     public $password;
     public $nickname;
     
+    
+    //whether existance
+    public function has($username)
+    {
+        $this->stmt->prepare('select id from users where username = ?');
+        $this->stmt->bind_param('s', $username);
+        $this->stmt->execute();
+        return $this->stmt->fetch();
+    }
+    
     //insert new record
     public function insert($username, $password, $nickname='')
     {

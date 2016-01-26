@@ -1,8 +1,8 @@
 <?php 
 include_once('model/users.php');
 
-class userController{
-
+class userController
+{
     
     public function new_user()
     {
@@ -10,6 +10,11 @@ class userController{
         $password = $_REQUEST['password'];
         $nickname = '';
         $user = new users();
+        if($user->has($username))
+        {
+            echo 1;
+            return;
+        }
         $suc = $user->insert($username, $password, $nickname);
         return $suc ? 1 : 0;
     }

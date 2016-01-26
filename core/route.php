@@ -22,13 +22,22 @@ if($ctrl == '/' && $method == 'GET')
     include('view/index.php');
 }
 
-if($ctrl == 'forum' && $method == 'GET')
+if($ctrl == 'forums' && $method == 'GET')
 {
-    // include('core/database.php');
-    // $db = new forums();
-    // $res = $db->find_all();
-    include('view/forum.php');
+    if($url_arr[4] === '')
+        include('view/forums.php');
+    else
+    {
+        $con = new forumController();
+        $con->return_forums_list($url_arr[4]);
+    }
 }
+
+// if($ctrl == 'forum' %% $method == 'GET')
+// {
+//     $con = new forumController();
+//     $con->return_forum($url_arr[4]);
+// }
 
 if($ctrl == 'user' && $method == 'POST' )
 {
