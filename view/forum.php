@@ -15,9 +15,13 @@
                 <div class='navbar-header'>
                     <a class='navbar-brand' href='<?= $root;?>'><img src='<?= $root;?>pic/PubBoard.png' /></a>
                 </div>
+            <div id="status">
+                <p class="navbar-text navbar-right" id='profile'><?=@$_SESSION['uname'];?></p>
             </div>
+            </div>
+            <input type="hidden" id="position" value="<?=$param;?>"/>
         </nav>
-        
+        <div id="content"></div>
         <div id="new_post">
             <form>
                 <div class="form-group">
@@ -30,15 +34,15 @@
             </form> 
         </div>
            
-        <div id="content"></div>
+        
         
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="js/jquery-2.2.0.min.js"></script>
+        <script src="<?= $root;?>js/jquery-2.2.0.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="js/bootstrap.min.js"></script>
-        <!--script>
+        <script src="<?= $root;?>js/bootstrap.min.js"></script>
+        <script>
             $.ajax({
-                url: 'forum',
+                url: '<?=$root;?>forum/<?=$param;?>',
                 type: 'GET',
                 success: function(data)
                 {
@@ -46,29 +50,32 @@
                     var size = res.length;
                     for(var i = 0; i < size; i++)
                     {
-                        $('#content').append('<div class="panel panel-default"><div class="panel-heading"><a href="forum/'+res[i].id+'">'+res[i].name+'</a></div><div class="panel-body">立即加入'+res[i].name+'吧!</div></div>');
+                        $('#content').append('<div class="panel panel-default"><div class="panel-heading"><a href="forums/<?=$param;?>/post/"'+res[i].id+'">'+res[i].title+'</a></div><div class="panel-body">'+res[i].content+'</div></div>');
                     }
                 }
             });
             
-            function new_forum()
+            function new_post()
             {
                 $.ajax({
-                    url: 'forum',
+                    url: '<?=$root;?>post',
                     type: 'POST',
                     data: {
-                        name: $('#newforum_name').val()
+                        forum_id: <?=$param;?>,
+                        title: $('#newpost_title').val(),
+                        content: $('#newpost_content').html()
                     },
                     success: function(data)
                     {
                         if(data == 0)
-                            alert('创建贴吧成功!');
+                            location.reload();
                         else
-                            alert('失败了,贴吧已经存在');
+                            alert('失败了- -');
                     }
                 });
             }
+
             
-        </script-->
+        </script>
         
     </body>    

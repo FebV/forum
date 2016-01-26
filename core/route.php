@@ -2,22 +2,24 @@
 include_once('core/config.php');
 include_once('core/database.php');
 include_once('core/controller.php');
-
+session_start();
 
 $url_arr = split('/', $_SERVER['PHP_SELF']);
+if(!isset($url_arr[2]))
+{
+    $url_arr[2] = '/';
+}
 if(!isset($url_arr[3]))
 {
-    $url_arr[3] = '/';
-}
-if(!isset($url_arr[4]))
-{
-    $url_arr[4] = '';
+    $url_arr[3] = '';
 }
 
-$ctrl =  $url_arr[3];
+$ctrl =  $url_arr[2];
 $method = $_SERVER['REQUEST_METHOD'];
-$param = $url_arr[4];
+$param = $url_arr[3];
 
+
+//router
 if($ctrl == '/' && $method == 'GET')
 {
     include('view/index.php');
@@ -25,7 +27,7 @@ if($ctrl == '/' && $method == 'GET')
 
 if($ctrl == 'forums' && $method == 'GET')
 {
-    if($url_arr[4] === '')
+    if($param === '')
         include('view/forums.php');
     else
     {
@@ -35,7 +37,7 @@ if($ctrl == 'forums' && $method == 'GET')
 
 if($ctrl == 'forum' && $method == 'GET')
 {
-    if($url_arr[4] === '')
+    if($param === '')
     {
         $con = new forumController();
         $con->return_forums_list();
@@ -44,7 +46,7 @@ if($ctrl == 'forum' && $method == 'GET')
     else
     {
         $con = new postController();
-        $con->return_posts_list($url_arr[4]);
+        $con->return_posts_list($param);
     }
 }
 
@@ -52,6 +54,12 @@ if($ctrl == 'forum' && $method == 'POST')
 {
     $con = new forumController();
     $con->new_forum();
+}
+
+if($ctrl == 'post' && $method == 'POST')
+{
+    $con = new postController();
+    $con->new_post();
 }
 
 if($ctrl == 'user' && $method == 'POST' )

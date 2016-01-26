@@ -30,13 +30,7 @@ class forumController
         return;
     }
     
-    public function return_posts_list($forum_id)
-    {
-        $post = new posts();
-        $res = $post->select_all($forum_id);
-        echo json_encode($res);
-        return;
-    }
+
     
 }
 ?>

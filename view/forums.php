@@ -15,6 +15,9 @@
                 <div class='navbar-header'>
                     <a class='navbar-brand' href='<?= $root;?>'><img src='<?= $root;?>pic/PubBoard.png' /></a>
                 </div>
+                <div id="status">
+                    <p class="navbar-text navbar-right" id='profile'><?=@$_SESSION['uname'];?></p>
+                </div>
             </div>
         </nav>
         
@@ -44,7 +47,7 @@
                     var size = res.length;
                     for(var i = 0; i < size; i++)
                     {
-                        $('#content').append('<div class="panel panel-default"><div class="panel-heading"><a href="forum/'+res[i].id+'">'+res[i].name+'</a></div><div class="panel-body">立即加入'+res[i].name+'吧!</div></div>');
+                        $('#content').append('<div class="panel panel-default"><div class="panel-heading"><a href="forums/'+res[i].id+'">'+res[i].name+'</a></div><div class="panel-body">立即加入'+res[i].name+'吧!</div></div>');
                     }
                 }
             });
@@ -66,6 +69,7 @@
                     }
                 });
             }
+            
             
         </script>
         

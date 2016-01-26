@@ -16,6 +16,8 @@ class userController
             return;
         }
         $suc = $user->insert($username, $password, $nickname);
+        $_SESSION['uid'] = $user->id;
+        $_SESSION['uname'] = $user->username;
         return $suc ? 0 : 1;
     }
     

@@ -6,5 +6,7 @@
      $password = '';
      $database = 'forums';
      
-     $root = 'http://localhost/forum/';
+     //last splash required
+     $root = 'http://localhost/';
+
 ?>

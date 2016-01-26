@@ -132,6 +132,9 @@
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="<?= $root;?>js/bootstrap.min.js"></script>
         <script>
+            var session = '<?=@$_SESSION['uname'];?>';
+            if(session)
+                show_status();
             function signup()
             {
                 $.ajax({
@@ -181,17 +184,7 @@
             {
                 $('#sign').css('display', 'none');
                 $('#profile').css('display', 'block');
-                $.ajax({
-                    url: 'user',
-                    type: 'GET',
-                    data: {
-                        id: id
-                    },
-                    success: function(data){
-                        var res = JSON.parse(data);
-                        $('#profile').html(res.username);
-                    }
-                })
+                $('#profile').html('<?=@$_SESSION['uname'];?>');
                 
             }
         </script>
