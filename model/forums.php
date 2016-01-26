@@ -4,6 +4,14 @@ class forums extends database
     public $id;
     public $name;
     
+    public function insert($name)
+    {
+        $this->stmt->prepare('insert into forums(name) values(?)');
+        $this->stmt->bind_param('s', $name);
+        $suc = $this->stmt->execute();
+        return $suc;
+    }
+    
     //find by id
     public function find($id)
     {
@@ -32,6 +40,15 @@ class forums extends database
             $arr[] = $res;
         }
         return $arr;
+    }
+    
+    public function has($name)
+    {
+        $this->stmt->prepare('select id from forums where name = ?');
+        $this->stmt->bind_param('s', $name);
+        $this->stmt->execute();
+        $exist = $this->stmt->fetch();
+        return $exist;
     }
 }
 ?>

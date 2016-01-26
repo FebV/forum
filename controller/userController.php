@@ -16,7 +16,7 @@ class userController
             return;
         }
         $suc = $user->insert($username, $password, $nickname);
-        return $suc ? 1 : 0;
+        return $suc ? 0 : 1;
     }
     
     public function get_profile()

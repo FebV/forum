@@ -1,4 +1,5 @@
 <?php
+include_once('core/config.php');
 include_once('core/database.php');
 include_once('core/controller.php');
 
@@ -28,16 +29,30 @@ if($ctrl == 'forums' && $method == 'GET')
         include('view/forums.php');
     else
     {
-        $con = new forumController();
-        $con->return_forums_list($url_arr[4]);
+        include('view/forum.php');
     }
 }
 
-// if($ctrl == 'forum' %% $method == 'GET')
-// {
-//     $con = new forumController();
-//     $con->return_forum($url_arr[4]);
-// }
+if($ctrl == 'forum' && $method == 'GET')
+{
+    if($url_arr[4] === '')
+    {
+        $con = new forumController();
+        $con->return_forums_list();
+        
+    }
+    else
+    {
+        $con = new postController();
+        $con->return_posts_list($url_arr[4]);
+    }
+}
+
+if($ctrl == 'forum' && $method == 'POST')
+{
+    $con = new forumController();
+    $con->new_forum();
+}
 
 if($ctrl == 'user' && $method == 'POST' )
 {

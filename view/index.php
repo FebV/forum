@@ -8,15 +8,15 @@
         <title>Welcome to PubBoard!</title>
 
         <!-- Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/index.css" rel="stylesheet">
+        <link href="<?= $root;?>css/bootstrap.min.css" rel="stylesheet">
+        <link href="<?= $root;?>css/index.css" rel="stylesheet">
 
      </head>
     <body>
         <nav class='navbar navbar-default'>
             <div class='container-fluid'>
                 <div class='navbar-header'>
-                    <a class='navbar-brand' href='index.php'><img src='pic/PubBoard.png' /></a>
+                    <a class='navbar-brand' href='<?= $root;?>'><img src='<?= $root;?>pic/PubBoard.png' /></a>
                 </div>
                 <div id="sign">
                     <button type="button" class="btn btn-default navbar-btn navbar-right" data-toggle="modal" data-target="#signInModal">Sign in</button>
@@ -38,12 +38,12 @@
             <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <img src="pic/143502_64010836.png" alt="...">
+                        <img src="<?= $root;?>pic/143502_64010836.png" alt="...">
                         <div class="carousel-caption">
                         </div>
                     </div>
                     <div class="item">
-                        <img src="pic/fc939d928e8d71615893ac02aa1949f8_9.jpg" alt="...">
+                        <img src="<?= $root;?>pic/fc939d928e8d71615893ac02aa1949f8_9.jpg" alt="...">
                         <div class="carousel-caption">
 
                         </div>
@@ -65,13 +65,13 @@
         
         <div id='down'>
             <div id='down_left'>
-                <a href='forums'><img src='pic/所有贴吧.png' class='img-circle'></a>
+                <a href='forums'><img src='<?= $root;?>pic/所有贴吧.png' class='img-circle'></a>
             </div>
             <div id='down_center'>
-                <img src='pic/敬请期待.png' class='img-circle'>
+                <img src='<?= $root;?>pic/敬请期待.png' class='img-circle'>
             </div>
             <div id='down_right'>
-                <img src='pic/敬请期待.png' class='img-circle'>
+                <img src='<?= $root;?>pic/敬请期待.png' class='img-circle'>
             </div>
         </div>
         
@@ -128,9 +128,9 @@
         </div><!-- /.modal -->
         
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="js/jquery-2.2.0.min.js"></script>
+        <script src="<?= $root;?>js/jquery-2.2.0.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="js/bootstrap.min.js"></script>
+        <script src="<?= $root;?>js/bootstrap.min.js"></script>
         <script>
             function signup()
             {

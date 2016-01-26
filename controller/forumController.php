@@ -1,14 +1,42 @@
 <?php 
 include_once('model/forums.php');
+include_once('model/posts.php');
 
 class forumController
 {
-    public function return_forums_list($param)
+    public function return_forums_list()
     {
-            $forum = new forums();
-            $res = $forum->find_all($param);
-            echo json_encode($res);
-    } 
+        if(isset($_GET['from']))
+            $from = $_GET['from'];
+        else
+            $from = 0;
+        $forum = new forums();
+        $res = $forum->find_all($from);
+        echo json_encode($res);
+        return;
+    }
+    
+    public function new_forum()
+    {
+        $name = $_POST['name'];
+        $forum = new forums();
+        if($forum->has($name))
+        {
+            echo 1;
+            return;
+        }
+        $suc = $forum->insert($name);
+        echo $suc ? 0 : 1;
+        return;
+    }
+    
+    public function return_posts_list($forum_id)
+    {
+        $post = new posts();
+        $res = $post->select_all($forum_id);
+        echo json_encode($res);
+        return;
+    }
     
 }
 ?>

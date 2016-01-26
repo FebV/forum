@@ -7,7 +7,7 @@
     </head>
     <title>所有贴吧 -- PubBoard</title>
     <link href="<?= $root;?>css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?= $root;?>css/forums.css" rel="stylesheet">
+    <link href="<?= $root;?>css/forum.css" rel="stylesheet">
     
     <body>
         <nav class='navbar navbar-default'>
@@ -18,23 +18,25 @@
             </div>
         </nav>
         
-        <div id="new_forum">
-            <form class="form-inline">
+        <div id="new_post">
+            <form>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="newforum_name" placeholder="新贴吧名称">
+                    <input type="text" class="form-control" id="newpost_title" placeholder="帖子标题">
                 </div>
-                <button type="button" class="btn btn-default" onclick="new_forum()">创建贴吧</button>
+                <div class="form-group">
+                    <textarea class="form-control" rows='3' id="newpost_content" placeholder="帖子内容"></textarea>
+                </div>
+                <button type="button" class="btn btn-default" onclick="new_post()">发表帖子</button>
             </form> 
         </div>
            
-        <div id="content">
-        </div>
+        <div id="content"></div>
         
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="<?= $root;?>js/jquery-2.2.0.min.js"></script>
+        <script src="js/jquery-2.2.0.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="<?= $root;?>js/bootstrap.min.js"></script>
-        <script>
+        <script src="js/bootstrap.min.js"></script>
+        <!--script>
             $.ajax({
                 url: 'forum',
                 type: 'GET',
@@ -67,6 +69,6 @@
                 });
             }
             
-        </script>
+        </script-->
         
     </body>    

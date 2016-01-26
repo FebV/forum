@@ -1,6 +1,7 @@
 <?php
 include_once('model/forums.php');
 include_once('model/users.php');
+include_once('model/posts.php');
 
 class database
 {

@@ -4,11 +4,7 @@ nav a,img
     height: 50px;
 }
 
-#content,#new_post
+#content,#new_forum
 {
     margin: 20px;
-}
-form
-{
-    width: 50%;
 }
