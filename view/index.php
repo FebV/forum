@@ -171,7 +171,7 @@
                         if(data != 0)
                         {
                             alert('成功了!');
-                            show_status(data);
+                            location.reload();
                         }
                         else{
                             alert('失败了');
