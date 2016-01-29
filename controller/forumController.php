@@ -11,7 +11,7 @@ class forumController
         else
             $from = 0;
         $forum = new forums();
-        $res = $forum->find_all($from);
+        $res = $forum->select_all($from);
         echo json_encode($res);
         return;
     }

@@ -5,9 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-    <title>吧 -- PubBoard</title>
+    <title> -- 吧 -- PubBoard</title>
     <link href="<?= $root;?>css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?= $root;?>css/forum.css" rel="stylesheet">
+    <link href="<?= $root;?>css/post.css" rel="stylesheet">
     
     <body>
         <nav class='navbar navbar-default'>
@@ -22,15 +22,12 @@
             <input type="hidden" id="position" value="<?=$param;?>"/>
         </nav>
         <div id="content"></div>
-        <div id="new_post">
+        <div id="new_comment">
             <form>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="newpost_title" placeholder="帖子标题">
+                    <textarea class="form-control" rows='3' id="newcomment_content" placeholder="评论内容"></textarea>
                 </div>
-                <div class="form-group">
-                    <textarea class="form-control" rows='3' id="newpost_content" placeholder="帖子内容"></textarea>
-                </div>
-                <button type="button" class="btn btn-default" onclick="new_post()">发表帖子</button>
+                <button type="button" class="btn btn-default" onclick="new_comment()">发表评论</button>
             </form> 
         </div>
            
@@ -42,7 +39,7 @@
         <script src="<?= $root;?>js/bootstrap.min.js"></script>
         <script>
             $.ajax({
-                url: '<?=$root;?>forum/<?=$param;?>',
+                url: '<?=$root;?>post/<?=$param;?>',
                 type: 'GET',
                 success: function(data)
                 {
@@ -51,20 +48,19 @@
                     for(var i = 0; i < size; i++)
                     {
                         var j = i + 1;
-                        $('#content').append('<div class="panel panel-default"><div class="panel-heading"><a href="<?=$root?>posts/'+res[i].id+'"'+res[i].id+'">'+res[i].title+'</a></div><div class="panel-body">'+res[i].content+'</div></div>');
+                        $('#content').append('<div class="panel panel-default"><div class="panel-heading">'+j+'楼</div><div class="panel-body">'+res[i].content+'</div></div>');
                     }
                 }
             });
             
-            function new_post()
+            function new_comment()
             {
                 $.ajax({
-                    url: '<?=$root;?>post',
+                    url: '<?=$root;?>comment',
                     type: 'POST',
                     data: {
-                        forum_id: <?=$param;?>,
-                        title: $('#newpost_title').val(),
-                        content: $('#newpost_content').val()
+                        post_id: <?=$param;?>,
+                        content: $('#newcomment_content').val()
                     },
                     success: function(data)
                     {

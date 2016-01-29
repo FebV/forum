@@ -14,6 +14,8 @@ if(!isset($url_arr[3]))
     $url_arr[3] = '';
 }
 
+
+
 $ctrl =  $url_arr[2];
 $method = $_SERVER['REQUEST_METHOD'];
 $param = $url_arr[3];
@@ -56,10 +58,27 @@ if($ctrl == 'forum' && $method == 'POST')
     $con->new_forum();
 }
 
+if($ctrl == 'posts' && $method == 'GET')
+{
+    include('view/post.php');
+}
+
+if($ctrl == 'post' && $method == 'GET')
+{
+    $con = new commentController();
+    $con->return_comments_list($param);
+}
+
 if($ctrl == 'post' && $method == 'POST')
 {
     $con = new postController();
     $con->new_post();
+}
+
+if($ctrl == 'comment' && $method == 'POST')
+{
+    $con = new commentController();
+    $con->new_comment();
 }
 
 if($ctrl == 'user' && $method == 'POST' )

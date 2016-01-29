@@ -19,7 +19,7 @@ class posts extends database
             $res['id'] = $this->id;
             $res['$author_id'] = $this->author_id;
             $res['title'] = $this->title;
-            $res['content'] = $this->title;
+            $res['content'] = $this->content;
             $arr[] = $res;
         }
         return $arr;
@@ -30,7 +30,8 @@ class posts extends database
         $this->stmt->prepare('insert into posts(forum_id, author_id, title, content) values (?, ?, ?, ?)');
         $this->stmt->bind_param('iiss', $forum_id, $author_id, $title, $content);
         $suc = $this->stmt->execute();
-        return $suc;
+        $id = $this->stmt->insert_id;
+        return $suc ? $id : false;
     }
 }
 ?>

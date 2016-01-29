@@ -25,7 +25,14 @@ class postController
         $title = $_POST['title'];
         $content = $_POST['content'];
         $post = new posts();
-        $suc = $post->insert($forum_id, $author_id, $title, $content);
+        $id = $post->insert($forum_id, $author_id, $title, $content);
+        if(!$id)
+        {
+            echo 1;
+            return;
+        }
+        $comment = new comments();
+        $suc = $comment->insert($id, $author_id, $content);
         echo $suc ? 0 : 1;
         return;
     }
