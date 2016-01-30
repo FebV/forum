@@ -21,11 +21,30 @@ class commentController
             echo 1;
             return;
         }
+        $type = $_POST['type'];
         $post_id = $_POST['post_id'];
         $author_id = $_SESSION['uid'];
-        $content = $_POST['content'];
+        $content = '';
+        if($type == 1)
+            $content = $_POST['content'];
+        else if($type == 2)
+        {
+            if($_FILES['file']['error'] > 0)
+            {   echo 2;
+                return;
+            }
+            else
+            {
+                $arr = split('.', $_FILES['file']['name']);
+                $suffix = $arr[1];
+                $des = 'upload/'.time().$suffix;
+                move_uploaded_file($_FILES['file']['tmp_name'], $des);
+                $content = $des;
+            }
+        }
+        
         $comment = new comments();
-        $suc = $comment->insert($post_id, $author_id, $content);
+        $suc = $comment->insert($type, $post_id, $author_id, $content);
         echo $suc ? 0 : 1;
         return;
     }

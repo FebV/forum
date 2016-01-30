@@ -26,10 +26,10 @@ class forums extends database
     }
     
     //find first 10 record by default
-    public function select_all($from = 0, $size = 10)
+    public function select_all()
     {
-        $this->stmt->prepare('select * from forums limit ?, ?');
-        $this->stmt->bind_param('ii', $from, $size);
+        $this->stmt->prepare('select * from forums');
+        //$this->stmt->bind_param('ii', $from, $size);
         $this->stmt->execute();
         $this->stmt->bind_result($this->id, $this->name);
         $arr = array();

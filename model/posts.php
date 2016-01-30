@@ -7,10 +7,10 @@ class posts extends database
     public $title;
     public $content;
     
-    public function select_all($forum_id, $from = 0, $size = 10)
+    public function select_all($forum_id)
     {
-        $this->stmt->prepare('select * from posts where forum_id = ? limit ?, ?');
-        $this->stmt->bind_param('iii', $forum_id, $from, $size);
+        $this->stmt->prepare('select * from posts where forum_id = ?');
+        $this->stmt->bind_param('i', $forum_id);
         $this->stmt->execute();
         $this->stmt->bind_result($this->id, $this->forum_id, $this->author_id, $this->title, $this->content);
         $arr = array();
