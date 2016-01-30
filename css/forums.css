@@ -1,14 +1,14 @@
-nav a,img
+#nav a,img
 {
     padding:  0 !important;
     height: 50px;
 }
 
-nav #status
+#nav #status
 {
     margin-right: 5%;
 }
-#content,#new_forum
+#content,#new_forum,#search
 {
     margin: 20px;
 }

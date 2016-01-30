@@ -18,6 +18,11 @@ class forumController
     
     public function new_forum()
     {
+        if($_POST['csrf'] != file_get_contents('temp/csrf.txt'))
+        {
+            echo 1;
+            return;
+        }
         $name = $_POST['name'];
         $forum = new forums();
         if($forum->has($name))

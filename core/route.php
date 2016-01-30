@@ -2,7 +2,15 @@
 include_once('core/config.php');
 include_once('core/database.php');
 include_once('core/controller.php');
+include_once('core/helper.php');
 session_start();
+if(!filter())
+{
+    echo "非法字符";
+    return;
+}
+
+
 
 $url_arr = split('/', $_SERVER['PHP_SELF']);
 if(!isset($url_arr[2]))
@@ -29,6 +37,7 @@ if($ctrl == '/' && $method == 'GET')
 
 if($ctrl == 'forums' && $method == 'GET')
 {
+    $csrf = csrf();
     if($param === '')
         include('view/forums.php');
     else
@@ -79,6 +88,11 @@ if($ctrl == 'comment' && $method == 'POST')
 {
     $con = new commentController();
     $con->new_comment();
+}
+if($ctrl == 'search' && $method == 'GET')
+{
+    $con = new searchController();
+    $con->search();
 }
 
 if($ctrl == 'user' && $method == 'POST' )
