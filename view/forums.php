@@ -24,7 +24,7 @@
         <div id="search">
             <form class="form-inline">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="serach_name" placeholder="搜索内容">
+                    <input type="text" class="form-control" id="search_content" placeholder="搜索内容">
                 </div>
                 <button type="button" class="btn btn-default" onclick="search()">全吧搜索</button>
             </form> 
@@ -94,14 +94,17 @@
                 $('#content').html('');
                 for(var i = (page-1)*5; i < page * 5 && i < size; i++)
                 {
-                    $('#content').append('<div class="panel panel-default"><div class="panel-heading"><a href="forums/'+res[i].id+'">'+res[i].name+'</a></div><div class="panel-body">立即加入'+res[i].name+'吧!</div></div>');
+                    if(typeof(res[i].title) == "undefined")
+                        $('#content').append('<div class="panel panel-default"><div class="panel-heading"><a href="forums/'+res[i].id+'">'+res[i].name+'</a></div><div class="panel-body">立即加入'+res[i].name+'吧!</div></div>');
+                    else
+                        $('#content').append('<div class="panel panel-default"><div class="panel-heading"><a href="<?=$root?>posts/'+res[i].id+'"'+res[i].id+'">'+res[i].title+'</a>['+res[i].forum_name+'吧]</div><div class="panel-body">'+res[i].content+'</div></div>');
                 }
             }
             
             function new_forum()
             {
                 $.ajax({
-                    url: 'forum',
+                    url: '<?=$root;?>forum',
                     type: 'POST',
                     data: {
                         name: $('#newforum_name').val(),
@@ -115,6 +118,23 @@
                         }
                         else
                             alert('失败了,贴吧已经存在');
+                    }
+                });
+            }
+            
+            function search()
+            {
+                $.ajax({
+                    url: '<?=$root;?>search',
+                    type: 'GET',
+                    data: {
+                        content: $('#search_content').val()
+                    },
+                    success: function(data)
+                    {
+                        res = JSON.parse(data);
+                        size = res.length;
+                        showpage(0);
                     }
                 });
             }
